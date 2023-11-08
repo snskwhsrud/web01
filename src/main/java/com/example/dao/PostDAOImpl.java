@@ -1,5 +1,6 @@
 package com.example.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -12,35 +13,30 @@ import com.example.domain.PostVO;
 public class PostDAOImpl implements PostDAO{
 	@Autowired
 	SqlSession session;
-	String  namespace="com.example.mapper.PostMapper";
+	String namespace="com.example.mapper.PostMapper";
 	
 	@Override
-	public List<PostVO> list() {
+	public List<HashMap<String, Object>> list() {
 		return session.selectList(namespace + ".list");
 	}
 
 	@Override
 	public void insert(PostVO vo) {
-		session.insert(namespace + ".insert",vo);
-		
+		session.insert(namespace + ".insert", vo);
 	}
 
 	@Override
 	public void update(PostVO vo) {
-		session.update(namespace + ".update",vo);
-		
+		session.update(namespace + ".update", vo);
 	}
 
 	@Override
 	public PostVO read(int pid) {
-		return session.selectOne(namespace + ".read",pid);
+		return session.selectOne(namespace + ".read", pid);
 	}
 
 	@Override
 	public void delete(int pid) {
-		session.delete(namespace + ".delete",pid);
-		
+		session.delete(namespace + ".delete", pid);
 	}
-	
-
 }
