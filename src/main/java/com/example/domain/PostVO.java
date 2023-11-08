@@ -1,6 +1,11 @@
 package com.example.domain;
 
+
+
+
+
 import java.util.Date;
+
 
 public class PostVO {
 	private int pid;
@@ -8,6 +13,7 @@ public class PostVO {
 	private String body;
 	private String writer;
 	private Date regdate;
+	
 	public int getPid() {
 		return pid;
 	}
@@ -38,6 +44,4 @@ public class PostVO {
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
-	
-
 }

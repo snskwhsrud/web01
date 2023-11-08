@@ -3,7 +3,8 @@
 <mapper namespace="com.example.mapper.PostMapper">
     <select id="list" resultType="hashmap">
         select p.*,date_format(p.regdate, "%Y-%m-%d %T") fmtdate, u.uname
-        from posts p, users u
+        from posts p, users u 
+        where writer=uid
         order by pid desc;
     </select>
     <insert id="insert">
@@ -15,9 +16,10 @@
     	set title=#{title},body=#{body}, regdate=now()
     	where pid=#{pid}
     </update>
-    <select id="read" resultType="com.example.domain.PostVO">
-    	select * from posts
-    	where pid=#{pid}
+    <select id="read" resultType="hashmap">
+    	select p.*,date_format(p.regdate, "%Y-%m-%d %T") fmtdate, uname
+    	from posts p, users u
+    	where pid=#{pid} and writer=uid
     </select>
     <delete id="delete">
     	delete from posts where pid=#{pid}

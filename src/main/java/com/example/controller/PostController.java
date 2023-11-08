@@ -21,9 +21,17 @@ public class PostController {
 	
 	@GetMapping("/posts/insert")
 	public String insert(Model model) {
-		model.addAttribute("pageName","posts/insert");
+		model.addAttribute("pageName", "posts/insert");
 		return "home";
 	}
+	
+	@GetMapping("/posts/read")
+	public String insert(Model model, int pid) {
+		model.addAttribute("pid", pid);
+		model.addAttribute("pageName", "posts/read");
+		return "home";
+	}
+	
 	@GetMapping("/posts")
 	public String list(Model model) {
 		model.addAttribute("pageName", "posts/list");
@@ -31,6 +39,11 @@ public class PostController {
 		return "home";
 	}
 	
+	@GetMapping("/posts/read.json") //localhost:8080/posts/read.json?pid=7
+	@ResponseBody
+	public HashMap<String, Object> read(int pid){
+		return dao.read(pid);
+	}
 	
 	@GetMapping("/posts/list.json")
 	@ResponseBody
@@ -42,5 +55,10 @@ public class PostController {
 	@ResponseBody
 	public void insert(PostVO vo) {
 		dao.insert(vo);
+	}
+	@PostMapping("/posts/delete")
+	@ResponseBody
+	public void delete(int pid) {
+		dao.delete(pid);
 	}
 }

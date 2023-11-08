@@ -31,7 +31,7 @@ public class PostDAOImpl implements PostDAO{
 	}
 
 	@Override
-	public PostVO read(int pid) {
+	public HashMap<String, Object> read(int pid) {
 		return session.selectOne(namespace + ".read", pid);
 	}
 
