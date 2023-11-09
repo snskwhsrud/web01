@@ -27,5 +27,11 @@ public class PostController {
 		model.addAttribute("pageName","posts/insert");
 		return "home";
 	}
+	@GetMapping("/update")
+	public String update(Model model, int pid) {
+		model.addAttribute("pid", pid);
+		model.addAttribute("pageName","posts/update");
+		return "home";
+	}
 
 }
