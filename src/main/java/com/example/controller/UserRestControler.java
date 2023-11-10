@@ -20,7 +20,8 @@ public class UserRestControler {
 	
 	@PostMapping("/update")
 	public void update(@RequestBody UserVO vo) {
-		System.out.println(vo.toString());
+		//System.out.println(vo.toString());
+		dao.update(vo);
 	}
 	@GetMapping("/read") //http://localhost:8080/users/read?uid=red
 	public HashMap<String,Object> read(String uid){
