@@ -1,6 +1,9 @@
 package com.example.controller;
 
+import java.util.HashMap;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +17,15 @@ import com.example.domain.UserVO;
 public class UserRestControler {
 	@Autowired
 	UserDAO dao;
+	
+	@PostMapping("/update")
+	public void update(@RequestBody UserVO vo) {
+		System.out.println(vo.toString());
+	}
+	@GetMapping("/read") //http://localhost:8080/users/read?uid=red
+	public HashMap<String,Object> read(String uid){
+		return dao.read(uid)
+;	}
 	
 	@PostMapping("/login")
 	public int login(@RequestBody UserVO vo) {

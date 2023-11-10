@@ -14,4 +14,14 @@ public class UserController {
 		model.addAttribute("pageName", "users/login.html");
 		return "home";
 	}
+	@GetMapping("/mypage")
+	public String mypage(Model model) {
+		model.addAttribute("pageName", "users/mypage.html");
+		return "home";
+	}
+	@GetMapping("/update")
+	public String update(Model model) {
+		model.addAttribute("pageName", "users/update.html");
+		return "home";
+	}
 }
