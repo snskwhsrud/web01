@@ -24,4 +24,14 @@ public class UserController {
 		model.addAttribute("pageName", "users/update.html");
 		return "home";
 	}
+	@GetMapping("/password")
+	public String password(Model model) {
+		model.addAttribute("pageName", "users/password.html");
+		return "home";
+	}
+	@GetMapping("/insert")
+	public String insert(Model model) {
+		model.addAttribute("pageName", "users/insert.html");
+		return "home";
+	}
 }
