@@ -42,4 +42,10 @@ public class UserDAOImpl implements UserDAO{
 		
 	}
 
+	@Override
+	public void insert(UserVO vo) {
+		session.insert(namespace + ".insert", vo); 
+		
+	}
+
 }

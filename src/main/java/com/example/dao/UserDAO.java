@@ -9,4 +9,5 @@ public interface UserDAO {
 	public void update(UserVO vo);
 	public void updatePhoto(UserVO vo);
 	public void updatePassword(UserVO vo);
+	public void insert(UserVO vo);
 }

@@ -48,6 +48,19 @@
 					alert("아이디,비밀번호,이름을 꼭 입력하세요!");
 				} else if (check == false) {
 					alert("아이디 중복체크하세요!");
+				} else {
+					if (confirm("회원등록을 하실래요?")) {
+						$.ajax({
+							type: "post",
+							url: "/users/insert",
+							data: JSON.stringify({uid, upass, uname, phone, address1, address2}),
+							contentType: "application/JSON",
+							success: function () {
+								alert("회원가입이 성공했습니다!");
+								location.href = "/users/login"
+							}
+						})
+					}
 				}
 			})
 			$("#btn-check").on("click", function () {

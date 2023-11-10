@@ -42,6 +42,10 @@ public class UserRestControler {
 		//System.out.println(vo.toString());
 		dao.update(vo);
 	}
+	@PostMapping("/insert")
+	public void insert(@RequestBody UserVO vo) {
+		dao.insert(vo);
+	}
 	@GetMapping("/read") //http://localhost:8080/users/read?uid=red
 	public HashMap<String,Object> read(String uid){
 		return dao.read(uid)
