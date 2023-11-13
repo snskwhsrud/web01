@@ -5,20 +5,20 @@
 		insert into users(uid, upass, phone, address1, address2, uname)
 		values(#{uid}, #{upass}, #{phone}, #{address1}, #{address2}, #{uname})
 	</insert>
-	<update id="update_password">
+	<update id="password">
 		update users
 		set upass=#{upass}
 		where uid=#{uid}
 	</update>
-	<update id="update_photo">
+	<update id="photo">
 		update users
-		set photo = #{photo}
-		where uid =#{uid}
+		set photo=#{photo}
+		where uid=#{uid} 
 	</update>
 	<update id="update">
 		update users
-		set uname=#{uname}, phone=#{phone}, address1=#{address1}, address2=#{address2}
-		where uid =#{uid}
+		set uname=#{uname},phone=#{phone},address1=#{address1},address2=#{address2}
+		where uid=#{uid}
 	</update>
     <select id="read" resultType="hashmap">
         select *, date_format(regdate, '%Y-%m-%d %T') fmtdate
