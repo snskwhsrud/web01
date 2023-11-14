@@ -46,7 +46,7 @@ public class PostDAOImpl implements PostDAO{
 		map.put("start", (page-1)*size);
 		map.put("size", size);
 		map.put("key", key);
-		map.put("query",query);
+		map.put("query", query);
 		return session.selectList(namespace + ".list1", map);
 	}
 
@@ -57,7 +57,17 @@ public class PostDAOImpl implements PostDAO{
 		map.put("query", query);
 		return session.selectOne(namespace + ".total", map);
 	}
+	
+	@Override
+	public void viewcnt(int pid) {
+		session.update(namespace + ".viewcnt", pid);
+	}
 
+	@Override
+	public void commcnt(int pid, int cnt) {
+		HashMap<String,Object> map=new HashMap<>();
+		map.put("pid", pid);
+		map.put("cnt", cnt);
+		session.update(namespace + ".commcnt", map);
+	}
 }
-
-

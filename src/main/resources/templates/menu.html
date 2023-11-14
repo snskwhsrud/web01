@@ -9,7 +9,7 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" id="posts">
           <a class="nav-link" href="/posts/list">게시글</a>
         </li>
       </ul>
@@ -28,6 +28,10 @@
   </div>
 </nav>
 <script>
+	if(getCookie("uid")){
+		sessionStorage.setItem("uid", getCookie("uid"));
+	}
+	
 	if(sessionStorage.getItem("uid")) {
 		$("#login, #mypage, #logout").toggle();
 		$("#mypage a").html(sessionStorage.getItem("uid"));
@@ -35,15 +39,11 @@
 	
 	$("#logout a").on("click", function(e){
 		e.preventDefault();
-		if(confirm("정말로 로그아웃하실래요?")){
+		if(confirm("정말로 로그아웃하실래요?")) {
 			sessionStorage.clear();
+			delCookie("uid");
 			location.href="/";
 		}
 	});
 	
-	$("#posts a").on("click", function(e){
-		e.preventDefault();
-		$(this).addClass("active");
-		location.href="/";
-	});
 </script>
