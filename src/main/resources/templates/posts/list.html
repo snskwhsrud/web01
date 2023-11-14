@@ -64,7 +64,7 @@
 					frm.submit();
 				} else {
 					$("#total").html(`검색수:${data}건`);
-					const totalPages = Math.ceil(data / 6);
+					const totalPages = Math.ceil(data / size);
 					$("#pagination").twbsPagination("changeTotalPages", totalPages, page)
 				}
 			}
